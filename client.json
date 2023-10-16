@@ -1,0 +1,46 @@
+{
+  "client": [
+    {
+      "id": 2,
+      "name": "Julia",
+      "email": "julia@gmail.com",
+      "telefone": 11939130240
+    },
+    {
+      "id": 3,
+      "name": "Pamela",
+      "email": "pamela@gmail.com",
+      "telefone": 11929359223
+    },
+    {
+      "id": 4,
+      "name": "Kaue",
+      "email": "kaue@gmail.com",
+      "telefone": 11987453486
+    },
+    {
+      "id": 5,
+      "name": "Julio",
+      "email": "julio@gmail.com",
+      "telefone": 11982085432
+    },
+    {
+      "id": 6,
+      "cnpj": "13",
+      "name": "13",
+      "empresa": "",
+      "email": "23",
+      "nacionalidade": "Brasileiro",
+      "telefone": 12
+    },
+    {
+      "id": 7,
+      "cnpj": "123123",
+      "name": "asd",
+      "contato": "ansduj",
+      "email": "kaue@",
+      "nacionalidade": "Estrangeiro",
+      "telefone": 11959811195
+    }
+  ]
+}
