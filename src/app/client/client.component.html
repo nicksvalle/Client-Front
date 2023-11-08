@@ -8,24 +8,33 @@
         <div class="display-6 text-center">
           Cadastro de Cliente
         </div>
-
+        
         <label for="cnpj" class="form-label">CNPJ</label>
-        <input type="cnpj" formControlName="cnpj" class="form-control borda-customizada" id="cnpj" placeholder="CNPJ">
-
+        <input type="number" formControlName="cnpj" class="form-control borda-customizada" id="cnpj" placeholder="CNPJ">
+        
+        <span *ngIf="submitted && formGroupClient.controls['cnpj'].invalid">
+          <small class="text-danger">Cnpj Inválido!</small>
+        </span>
       </div>
 
       <div class="mb-3">
 
         <label for="empresa" class="form-label">Nome da Empresa</label>
         <input type="empresa" formControlName="empresa" class="form-control borda-customizada" id="empresa" placeholder="Nome da Empresa">
-
+        
+        <span *ngIf="submitted && formGroupClient.controls['empresa'].invalid">
+          <small class="text-danger">Empresa Inválido!</small>
+        </span>
       </div>
 
       <div class="mb-3">
-
+        
         <label for="contato" class="form-label">Nome de Contato</label>
         <input type="contato" formControlName="contato" class="form-control borda-customizada" id="contato" placeholder="Nome de Contato">
       
+        <span *ngIf="submitted && formGroupClient.controls['contato'].invalid">
+          <small class="text-danger">Nome de Contato Inválido!</small>
+        </span>
       </div>
 
       <div class="mb-3">
@@ -33,6 +42,9 @@
         <label for="email" class="form-label">Email</label>
         <input type="email" formControlName="email" class="form-control borda-customizada" id="email" placeholder="Email">
       
+        <span *ngIf="submitted && formGroupClient.controls['email'].invalid">
+          <small class="text-danger">Email Inválido!</small>
+        </span>
       </div>
 
       <div class="mb-3">
@@ -40,7 +52,26 @@
         <label for="telefone" class="form-label">Telefone</label>
         <input type="number" formControlName="telefone" class="form-control borda-customizada" id="telefone" placeholder="Telefone">
       
+        <span *ngIf="submitted && formGroupClient.controls['telefone'].invalid">
+          <small class="text-danger">Telefone Inválido!</small>
+        </span>
       </div>
+
+      <div class="mb-3">
+        
+        <div class="col-md-3">
+          <label for="escopo" class="form-label">Escopo</label>
+          <select id="escopo" formControlName="escopo" class="form-select">
+            <option value="" disabled selected>Escolha um escopo...</option>
+            <option *ngFor="let item of escopos" [value]="item.nome">{{ item.nome }}</option>
+          </select>
+        </div>
+
+        <span *ngIf="submitted && formGroupClient.controls['escopo'].invalid">
+          <small class="text-danger">Escolha um Escopo!</small>
+        </span>
+      </div>
+    
 
       <div class="mb-3">
         <label class="form-label">Nacionalidade</label>
@@ -54,6 +85,10 @@
           <input type="radio" formControlName="nacionalidade" class="form-check-input" id="estrangeiro" value="Estrangeiro">
           <label for="estrangeiro" class="form-check-label">Estrangeiro</label>
         </div>
+
+        <span *ngIf="submitted && formGroupClient.controls['nacionalidade'].invalid">
+          <small class="text-danger">Escolha uma Nacionalidade!</small>
+        </span>
       </div>
 
       <div class="mb-3 d-flex justify-content-end">
@@ -76,38 +111,37 @@
 
         <div class="col-md-12">
 
-            <table class="table table-dark table-striped table-bordered">
-
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">CNPJ</th>
-                    <th scope="col">Nome da Empresa</th>
-                    <th scope="col">Contato</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Nacionalidade</th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <tr *ngFor="let client of client">
-                    <th scope="row">{{client.id}}</th>
-                    <td>{{client.cnpj}}</td>
-                    <td>{{client.empresa}}</td>
-                    <td>{{client.contato}}</td>
-                    <td>{{client.email}}</td>
-                    <td>{{client.telefone}}</td>
-                    <td>{{client.nacionalidade}}</td>
-                    <td>
-                    <button type="button" class="btn btn-dark me-1" (click)="edit(client)" >Editar</button>
-                    <button type="button" class="btn btn-dark" (click)="delete(client)">Excluir</button>
-                    </td>
-                </tr>
-                </tbody>
-
-            </table>
+          <table class="tabela-customizada">
+            <thead>
+              <tr class="linha-customizada">
+                <th scope="col">ID</th>
+                <th scope="col">CNPJ</th>
+                <th scope="col">Nome da Empresa</th>
+                <th scope="col">Contato</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Escopo</th>
+                <th scope="col">Nacionalidade</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let client of client">
+                <th scope="row" class="active-row">{{client.id}}</th>
+                <td>{{client.cnpj}}</td>
+                <td>{{client.empresa}}</td>
+                <td>{{client.contato}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.telefone}}</td>
+                <td>{{client.escopo}}</td>
+                <td>{{client.nacionalidade}}</td>
+                <td>
+                  <button type="button" class="btn btn-dark me-1" (click)="edit(client)" >Editar</button>
+                  <button type="button" class="btn btn-dark" (click)="delete(client)">Excluir</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
         </div>
 

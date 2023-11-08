@@ -4,6 +4,7 @@ export interface Client{
     empresa : string;
     contato : string;
     email : string;
+    escopo: string;
     nacionalidade : string;
     telefone : number;
   }
