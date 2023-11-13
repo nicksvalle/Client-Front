@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Proposta } from '../proposta';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropostaService } from '../proposta.service';
+import { vendedores } from '../vendedores';
+import { escopos } from '../escopo';
+import { status } from '../status';
 
 @Component({
   selector: 'app-proposta',
@@ -14,19 +17,22 @@ export class PropostaComponent {
   isEditing : boolean = false;
   formGroupClient: FormGroup;
   PropostaService: any;
-
+  submitted: boolean = false;
+  vendedores = vendedores;
+  escopos = escopos;
+  status = status;
 
   constructor (private propostaService : PropostaService, private formBuilder : FormBuilder){
 
     this.formGroupClient = formBuilder.group({
       id : [''],
-      empresa : [''],
-      type : [''],
-      date : [''],
-      valor : [''],
-      status : [''],
-      vendedor : [''],
-      comentario : ['']
+      empresa : ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      type : ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      date : ['', Validators.required],
+      valor : ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      status : ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      vendedor : ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]],
+      comentario : ['', [Validators.required, Validators.pattern('^(?!\\s*$).+')]]
     });
   }
 
@@ -43,6 +49,8 @@ export class PropostaComponent {
   }
 
   save(){
+    this.submitted = true;
+
     if(this.isEditing)
     {
       this.propostaService.update(this.formGroupClient.value).subscribe(
@@ -51,6 +59,10 @@ export class PropostaComponent {
             this.loadProposta();
             this.formGroupClient.reset();
             this.isEditing = false;
+            this.submitted = false;
+            this.setEscolhaUmVendedor();
+            this.setEscolhaUmTipo();
+            this.setEscolhaUmStatus();
           }
         }
       )
@@ -61,15 +73,44 @@ export class PropostaComponent {
           next: data => {
             this.proposta.push(data);
             this.formGroupClient.reset();
+            this.submitted = false;
+            this.setEscolhaUmVendedor();
+            this.setEscolhaUmTipo();
+            this.setEscolhaUmStatus();
           }
         }
         );
     }
  }
+  setEscolhaUmTipo() {
+    const escopoControl = this.formGroupClient.get('type');
+    if (escopoControl) {
+        escopoControl.setValue('');
+    }
+  }
+
+  setEscolhaUmVendedor(){
+    const vendedorControl = this.formGroupClient.get('vendedor');
+    if(vendedorControl){
+      vendedorControl.setValue('');
+    }
+  }
+
+  setEscolhaUmStatus(){
+    const statusControl = this.formGroupClient.get('status');
+    if(statusControl){
+      statusControl.setValue('');
+    }
+  }
+  
 
   clean(){
     this.formGroupClient.reset();
     this.isEditing = false;
+    this.submitted = false;
+    this.setEscolhaUmVendedor();
+    this.setEscolhaUmTipo();
+    this.setEscolhaUmStatus();
   }
 
   edit(proposta : Proposta){
