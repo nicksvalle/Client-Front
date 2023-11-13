@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Proposta } from '../proposta';
+import { Proposta } from '../../proposta';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PropostaService } from '../proposta.service';
-import { vendedores } from '../vendedores';
-import { escopos } from '../escopo';
-import { status } from '../status';
+import { PropostaService } from '../../services/proposta/proposta.service';
+import { vendedores } from '../../vendedores';
+import { escopos } from '../../escopo';
+import { status } from '../../status';
 
 @Component({
   selector: 'app-proposta',

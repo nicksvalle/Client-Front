@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from '../client';
+import { Client } from '../../client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from '../client.service';
-import { escopos } from '../escopo';
+import { ClientService } from '../../services/client/client.service';
+import { escopos } from '../../escopo';
 
 @Component({
   selector: 'app-client',

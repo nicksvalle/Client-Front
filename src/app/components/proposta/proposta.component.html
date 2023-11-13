@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-8 m-auto">
+
+    <form [formGroup]="formGroupClient">
+      <div class="mb-3">
+
+        <div class="display-6 text-center">
+          Cadastro de Proposta
+        </div>
+
+        <label for="empresa" class="form-label">Nome da Empresa</label>
+        <input type="empresa" formControlName="empresa" class="form-control borda-customizada" id="empresa" placeholder="Nome da Empresa">
+
+        <span *ngIf="submitted && formGroupClient.controls['empresa'].invalid">
+          <small class="text-danger">Nome da Empresa Inválido!</small>
+        </span>
+      </div>
+
+      <div class="mb-3">
+
+        <div class="col-md-3">
+          <label for="type" class="form-label">Tipo de Certificação</label>
+          <select id="type" formControlName="type" class="form-select">
+              <option value="" disabled selected>Escolha uma Certificação...</option>
+              <option *ngFor="let item of escopos" [value]="item.nome">{{ item.nome }}</option>
+          </select>
+
+          <span *ngIf="submitted && formGroupClient.controls['type'].invalid">
+            <small class="text-danger">Tipo de Certificação Inválido!</small>
+          </span>
+      </div>
+
+      </div>
+
+      <div class="mb-3">
+
+        <label for="date" class="form-label">Data de envio</label>
+        <input type="date" formControlName="date" class="form-control borda-customizada" id="date" placeholder="Data de envio">
+        
+        <span *ngIf="submitted && formGroupClient.controls['date'].invalid">
+          <small class="text-danger">Data de envio Inválida!</small>
+        </span>
+      </div>
+
+      <div class="mb-3">
+        
+        <label for="valor" class="form-label">Valor</label>
+        <input type="number" formControlName="valor" class="form-control borda-customizada" id="valor" placeholder="Valor">
+        
+        <span *ngIf="submitted && formGroupClient.controls['valor'].invalid">
+          <small class="text-danger">Valor Inválido!</small>
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <div class="col-md-3">
+
+        <label for="status" class="form-label">Status</label>
+        <select id="status" formControlName="status" class="form-select">
+          <option value="" disabled selected>Escolha um status...</option>
+          <option *ngFor="let item of status" [value]="item.nome">{{ item.nome }}</option>
+        </select>
+
+        <span *ngIf="submitted && formGroupClient.controls['status'].invalid">
+          <small class="text-danger">Escolha um tipo de Status!</small>
+        </span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+
+        <div class="col-md-3">
+        
+        <label for="vendedor" class="form-label">Vendedor</label>
+
+        <select id="vendedor" formControlName="vendedor" class="form-select">
+            <option value="" disabled selected>Escolha um vendedor...</option>
+            <option *ngFor="let item of vendedores" [value]="item.nome">{{ item.nome }}</option>
+          </select>
+
+          <span *ngIf="submitted && formGroupClient.controls['vendedor'].invalid">
+            <small class="text-danger">Escolha um Vendedor!</small>
+          </span>
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+        
+        <label for="comentario" class="form-label">Comentario</label>
+        <input type="comentario" formControlName="comentario" class="form-control borda-customizada" id="comentario" placeholder="Comentario">
+        
+        <span *ngIf="submitted && formGroupClient.controls['comentario'].invalid">
+          <small class="text-danger">Comentário Inválido!</small>
+        </span>
+      </div>
+
+      <div class="mb-3 d-flex justify-content-end">
+        
+        <button type="button" class="btn btn-dark me-1" (click)="save()">Salvar</button>
+        <button type="button" class="btn btn-dark" (click)="clean()">Limpar</button>
+      
+      </div>
+  </form>
+
+  </div>
+
+</div>
+
+<div class="container text-center">
+
+  <div class="row">
+
+
+      <div class="col-md-12">
+
+        <table class="tabela-customizada">
+          <thead>
+            <tr class="linha-customizada">
+                  <th scope="col">ID</th>
+                  <th scope="col">Nome da Empresa</th>
+                  <th scope="col">Tipo de Certificação</th>
+                  <th scope="col">Data de envio</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Vendedor</th>
+                  <th scope="col">Comentario</th>
+                  <th></th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr *ngFor="let proposta of proposta">
+                  <th scope="row" class="active-row">{{proposta.id}}</th>
+                  <td>{{proposta.empresa}}</td>
+                  <td>{{proposta.type}}</td>
+                  <td>{{proposta.date}}</td>
+                  <td>{{proposta.valor}}</td>
+                  <td>{{proposta.status}}</td>
+                  <td>{{proposta.vendedor}}</td>
+                  <td>{{proposta.comentario}}</td>
+                  <td>
+                  <button type="button" class="btn btn-dark me-1" (click)="edit(proposta)" >Editar</button>
+                  <button type="button" class="btn btn-dark" (click)="delete(proposta)">Excluir</button>
+                  </td>
+              </tr>
+              </tbody>
+
+          </table>
+
+      </div>
+
+  </div>
+
+</div>

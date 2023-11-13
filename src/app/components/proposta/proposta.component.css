@@ -1,0 +1,52 @@
+.borda-customizada {
+    border: 2px solid #2c3034; /* Cor e espessura da borda desejadas */
+  }
+
+  .form-check-input[type="radio"] {
+    border: 2px solid #333; /* Cor e espessura do contorno desejados */
+    border-radius: 50%; /* Para tornar o contorno circular */
+    width: 20px; /* Largura desejada da bolinha */
+    height: 20px; /* Altura desejada da bolinha */
+  }
+
+  input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #007bff; /* Cor desejada */
+  }
+
+  .tabela-customizada {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    text-align: center;
+    min-width: 400px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.50);
+  }
+
+  .tabela-customizada thead tr {
+    background-color: #1E6799;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .tabela-customizada th, .tabela-customizada td{
+    padding: 12px 15px;
+  }
+
+  .tabela-customizada tbody tr {
+    border-bottom: 1px solid #0E173E;
+  }
+  
+  .tabela-customizada tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+  }
+  
+  .tabela-customizada tbody tr:last-of-type {
+      border-bottom: 3px solid #1E6799;
+  }
+
+  .tabela-customizada tbody th.active-row {
+    font-weight: bold;
+    color: #1E6799;
+}
