@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from '../../client';
+import { Client } from '../../interfaces/client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../services/client/client.service';
 import { escopos } from '../../escopo';

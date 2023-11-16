@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="card w-50 h-60">
+        <div class="card-body">
+
+            <div class="text-center">
+                <h1>Login</h1>
+            </div>
+
+            <form class="row g-3" [formGroup]="formGroupLogin" (ngSubmit)="loginUser()">
+                <div class="col-md-12">
+                    <label for="Email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" formControlName="email" placeholder="Digite o email">
+
+                    <span *ngIf="submitted && formGroupLogin.controls['email'].invalid">
+                        <small class="text-danger">Email Inválido!</small>
+                    </span>
+                </div>
+
+                <div class="col-12">
+                    <label for="password" class="form-label">Senha</label>
+                    <div class="input-group">
+                      <input type="{{ hidePassword ? 'password' : 'text' }}" class="form-control" id="password" formControlName="password" placeholder="Digite a senha">
+                      <button mat-icon-button type="button" (click)="togglePasswordVisibility()" tabindex="-1" matSuffix>
+                        <mat-icon>{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                      </button>
+                    </div>
+                  
+                    <span *ngIf="submitted && formGroupLogin.controls['password'].invalid">
+                      <small class="text-danger">Senha Inválida!</small>
+                    </span>
+                  </div>
+
+                <div class="col-12" style="margin-top: 40px; margin-left: 270px;">
+                    <button type="submit" class="btn btn-danger me-2">Entrar</button>
+                </div>
+
+                <div class="mt-2">Not a member? <a routerLink="/register">Register</a></div>
+            </form>
+        </div>
+    </div>
+</div>

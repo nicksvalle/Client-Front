@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Proposta } from '../../proposta';
+import { Proposta } from '../../interfaces/proposta';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropostaService } from '../../services/proposta/proposta.service';
 import { vendedores } from '../../vendedores';

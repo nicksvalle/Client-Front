@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Proposta } from '../../proposta';
+import { Proposta } from '../../interfaces/proposta';
 
 @Injectable({
   providedIn: 'root'
